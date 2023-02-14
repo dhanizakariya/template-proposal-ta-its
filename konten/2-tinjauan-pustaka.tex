@@ -2,27 +2,162 @@
 
 % Ubah konten-konten berikut sesuai dengan isi dari tinjauan pustaka
 \section{Hasil penelitian/perancangan terdahulu}
-\lipsum[3]
+Beberapa penelitian yang terkait dengan penjadwalan dan algoritma genetika adalah 
+\linebreak penelitian yang dilakukan oleh Ardiansyah dan Junianto (2022) 
+dengan judul Penerapan \linebreak Algoritma Genetika untuk Penjadwalan Mata Pelajaran. 
+Dari penelitian ini dihasilkan kesimpulan bahwa proses penjadwalan mata pelajaran dengan 
+aplikasi penjadwalan yang menggunakan algoritma genetika jauh lebih efisien daripada 
+dilakukan dengan cara semi manual dengan bantuan google sheet. Penggunaan aplikasi 
+penjadwalan juga menghasilkan keluaran file yang sama dengan metode semi-manual yaitu berbentuk excel.
+
+Selanjutnya pada penelitian yang dilakukan Alnowaini dan Aljomai (2021) dengan judul penelitian 
+Genetic Algorithm for Solving University Course Timetabling Problem Using Dynamic Chromosomes 
+yang dipublikasikan pada International Conference of Technology, Science and Administration 2021 
+diperoleh hasil penggunaan algoritma genetika untuk proses penjadwalan perkuliahan terbukti efisien 
+dengan mendapatkan nilai fitness function sebesar 24.0 dan dengan waktu pembuatan jadwal 5 menit. 
+Hasil penjadwalan mendekati nilai optimal untuk ditetapkan pada perkuliahan di 3 departemen 
+(Information Technology, Communication, Computer Networks, and Distribution Systems) Taiz University, Yaman. 
+Waktu penjadwalan berkurang drastis dengan pengaplikasian algoritma genetika.
+
+Mone dan Simarmata (2021) melakukan penelitian dengan judul 
+Aplikasi Algoritma \linebreak Genetika Dalam Penjadwalan Mata Kuliah mendapatkan hasil 
+penjadwalan berhasil dilakukan dengan running aplikasi diperoleh rata-rata waktu eksekusi 
+30 jadwal adalah 25.86 menit, standar deviasi 11,88 menit dengan jumlah ruang kuliah sebanyak 3 
+ruang kuliah, dan 1 ruang aula untuk mata kuliah umum, 51 pengampu mata kuliah, 18 dosen, 5 hari 
+kerja dan 14 jam efektif per hari. Selain itu jadwal yang dihasilkan tidak terjadi bentrok dosen, 
+tidak terjadi bentrok ruang dan waktu, tidak terjadi bentrok waktu dosen yang berhalangan, 
+dan tidak terjadi bentrok dengan waktu sholat jumat. Dari hasil-hasil tersebut disimpulkan 
+bahwa aplikasi penjadwalan yang dibuat efektif dan efisien.
+
+
 
 \section{Teori/Konsep Dasar}
 
-\subsection{Hukum Newton}
+\subsection{Penjadwalan}
+Penjadwalan merupakan proses perencanaan untuk menentukan kapan dan dimana setiap \linebreak kegiatan sebagai bagian dari pekerjaan secara keseluruhan harus dilakukan pada sumber daya yang terbatas, serta pengalokasian sumber daya pada suatu waktu tertentu dengan memperhatikan kapasitas sumber daya yang ada. 
+Penjadwalan dapat diartikan sebagai pengalokasian sejumlah sumber daya (resource) untuk melakukan sejumlah tugas atau operasi dalam jangka waktu tertentu dan merupakan proses pengambilan keputusan yang peranannya sangat penting. 
+Penjadwalan juga dapat didefinisikan sebagai proses pengalokasian sumber daya untuk mengerjakan sekumpulan tugas dalam jangka waktu tertentu dengan 2 arti penting sebagai berikut: 
+\begin{enumerate}
+  \item Penjadwalan merupakan suatu fungsi pengambilan keputusan untuk membuat atau \linebreak menentukan jadwal. 
+  \item Penjadwalan merupakan suatu teori yang berisi sekumpulan prinsip dasar, model, teknik, dan kesimpulan logis dalam proses pengambilan keputusan yang memberikan pengertian dalam fungsi penjadwalan (\cite{prasetya2017penjadwalan}).
+\end{enumerate}
 
-% Contoh penggunaan referensi dari pustaka
-Newton pernah merumuskan \parencite{Newton1687} bahwa \lipsum[8]
-% Contoh penggunaan referensi dari persamaan
-Kemudian menjadi persamaan seperti pada persamaan \ref{eq:FirstLaw}.
+\subsection{Algoritma Genetika}
+Algoritma genetika ditemukan oleh John Holland pada tahun 1975 di Universitas Michigan, Amerika Serikat yang dipublikasikan dalam bukunya yang berjudul “Adaption in Natural and Artificial Systems”. 
+Menurut John Holland, setiap masalah yang berbentuk adaptasi baik alami, maupun buatan dapat diformulasikan dalam terminologi genetika. Algoritma genetika merupakan algoritma pencarian heuristik yang didasarkan atas mekanisme seleksi alami dan genetika alami (\cite{Mauluddin2018}). 
 
-% Contoh pembuatan persamaan
-\begin{equation}
-  % Label referensi dari persamaan yang dibuat
-  \label{eq:FirstLaw}
-  % Baris kode persamaan yang dibuat
-  \sum \mathbf{F} = 0\; \Leftrightarrow\; \frac{\mathrm{d} \mathbf{v} }{\mathrm{d}t} = 0.
-\end{equation}
+Algoritma Genetika merupakan teknik untuk mencari solusi optimal dari permasalahan yang memiliki banyak penyelesaian. 
+Teknik ini akan melakukan pencarian dari beberapa solusi yang diperoleh hingga mendapatkan solusi terbaik sesuai dengan kriteria yang telah ditentukan atau yang disebut sebagai fungsi fitness. 
+Algoritma ini masuk dalam kelompok algoritma evolusioner. Algoritma ini menggunakan pendekatan evolusi Darwin di bidang Biologi seperti pewarisan sifat, seleksi alam, mutasi gen dan kombinasi (crossover).  
+Karena merupakan Teknik pencarian optimal dalam bidang ilmu komputer, maka algoritma ini juga termasuk dalam kelompok algoritma metaheuristik (\cite{binusAlgoritmaGenetika}).
 
-\lipsum[9]
+Berikut ini adalah uraian singkat dari tahapan-tahapan dalam proses algoritma genetika:
+\begin{enumerate}
+  \item Skema Pengodean
+  
+  Dalam sebagian besar masalah komputasi, skema pengkodean yang merupakan metode untuk 
+  mengubah data dalam bentuk tertentu memiliki peran yang amat penting. 
+  Informasi yang diberikan dalam proses algoritma genetika harus dikodekan menjadi string bit tertentu. 
+  Skema pengkodean ini dibedakan menurut domain masalah (\cite{Katoch2020}).
+  
+  Pada umumnya dikenal beberapa skema pendekodean kromosom, yaitu antara lain : 
+  \begin{enumerate}
+    \item Binary Encoding
+    
+    Skema pengkodean ini merupakan skema pengkodean yang paling sering \linebreak digunakan. 
+    Tiap gen atau kromosom direpresentasikan dengan angka 1 atau 0. Pada skema pengkodean biner, 
+    tiap bit merepresentasikan karakteristik dari solusi. Metode ini membuat implementasi operasi 
+    crossover dan mutase menjadi lebih cepat. Namun skema ini memerlukan proses yang lebih rumit karena harus \linebreak 
+    mengonversi data menjadi kode biner dan akurasi dari algoritma ditentukan oleh proses konversinya (Katoch, et al. 2021).
+    \item Octal Encoding
+    
+    Pada skema pengkodean oktal, gen atau kromosom direpresentasikan dalam bentuk angka oktal (0-7) (\cite{Katoch2020}).
+    \item Hexadecimal Encoding
+    
+    Pada skema pengkodean heksadesimal, gen atau kromosom direpresentasikan dalam bentuk angka heksadesimal(0-9, A-F) (\cite{Katoch2020}).
+    \item Permutation Encoding
+    
+    Dalam skema pengkodean ini, gen atau kromosom diwakili oleh deretan angka yang mewakili posisi dalam suatu urutan(\cite{Katoch2020}). 
+    \item Value Encoding
+    
+    Dalam skema pengkodean ini, gen atau kromosom direpresentasikan menggunakan string dari beberapa nilai. Nilai-nilai ini bisa berupa bilangan real, bilangan bulat, atau karakter huruf. Skema pengkodean ini dapat membantu dalam memecahkan masalah di mana nilai yang lebih rumit digunakan. Karena pengkodean biner mungkin gagal dalam masalah seperti itu. Ini terutama digunakan dalam \emph{neural network} untuk menemukan bobot optimal(\cite{Katoch2020}).
 
-\subsection{Anti Gravitasi}
+  \end{enumerate}
+  
+  \item Inisialiasi Populasi Awal
+  
+  Penentuan populasi awal merupakan proses pembuatan beberapa kromosom secara acak. Kromosom adalah solusi alternatif yang mungkin. Dapat dikatakan bahwa kromosom sama dengan individu. Besar kecilnya populasi tergantung pada masalah yang akan dipecahkan. Setelah menentukan ukuran populasi, populasi awal dibentuk dengan memulai kemungkinan solusi untuk kromosom yang berbeda. Panjang kromosom ditentukan berdasarkan masalah yang dipelajari(\cite{Ardiansyah2022}).
+  \item Fungsi Fitness
+  
+  Individu dievaluasi berdasarkan fungsi tertentu sebagai ukuran kinerjanya. 
+  Individu dengan nilai fitness tinggi pada kromosomnya yang akan dipertahankan, 
+  sedangkan individu yang pada kromosomnya bernilai fitness rendah akan diganti. 
+  Fungsi fitness tergantung pada permasalahan tertentu dari representasi yang digunakan. 
+  Secara umum perhitungan nilai fitness dari setiap kromosom dapat dirumuskan sebagai berikut.
+  \begin{equation}
+    \label{eq:fitness}
+    \mathbf{Fitness} = \frac{1}{1 + (F1B1 + F2B2 + \cdot \cdot \cdot +  FnBn)}\; 
+  \end{equation}
 
-\lipsum[10]
+  Keterangan :\\
+  Bn = Bobot Pelanggaran\\
+  Fn = Banyaknya Pelanggaran\\
+  n  = 1…n (\cite{muhammad2020penjadwalan})
+  \item Seleksi
+  
+  Seleksi merupakan proses yang penting dalam algoritma genetika. 
+  Prosesn seleksi akan menentukan apakah sebuah individu akan berpartisipasi dalam proses reproduksi atau tidak.
+  Proses seleksi ini juga biasa dikenal sebagai operator reproduksi. 
+  Teknik seleksi yang umum digunakan pada algoritma genetika antara lain \emph{roulette wheel, rank, tournament, boltzmann,} dan \emph{stochastic universal sampling}.(\cite{Katoch2020}).
+  
+  \begin{enumerate}
+    \item \emph{Roulette wheel}
+    
+    Metode \emph{roulette wheel} memetakan semua individu sesuai dengan nilai probabilitasnya. Probabilitas ini ditentukan berdasarkan nilai fitnessnya. Individu tersebut dipetakan ke dalam roda, kemudian diputar secara acak untuk menentukan individu mana yang akan berpartisipasidalam pembentukan generasi berikutnya(\cite{Katoch2020}.)
+    \item \emph{Rank}
+    
+    Metode \emph{rank} merupakan modifikasi dari metode \emph{roulette wheel}. Metode ini menggunakan ranking dari masing-masing individu berdasarkan nilai fitnesnya. Metode ini mengurangi kemungkinan konvergensi solusi sebelum waktunya(\cite{Katoch2020}).
+    \item \emph{Tournament} 
+    
+    Teknik pemilihan \emph{tournament} pertama kali diusulkan oleh Brindle pada tahun 1983. Individu dipilih berdasarkan nilai fitness mereka pada \emph{stochastic roulette wheel} secara berpasangan. Setelah seleksi,
+    individu dengan nilai fitness yang lebih tinggi akan ditambahkan ke \emph{pool} generasi berikutnya(\cite{Katoch2020}).
+    \item \emph{Boltzmann} 
+    
+    Metode seleksi \emph{Boltzmann} merupakan metode seleksi yang berbasis entropy dan metode sampling, yang digunakan pada \emph{Monte
+    Carlo Simulation}. Metode ini membantu dalam memecahkan masalah konvergensi prematur(\cite{Katoch2020}).
+    \item \emph{Stochastic Universal Sampling}
+    
+    \emph{Stochastic Universal Sampling} merupakan pengembangan dari metode \emph{roulette \linebreak wheel}. Pada metode ini, posisi tiap individu ditentukan secara acak dengan jarak yang sama antar satu dengan yang lain. Dengan metode ini semua individu memiliki kesempatan yang sama untuk terpilih(\cite{Katoch2020}).
+  \end{enumerate}
+  \item Crossover
+  
+  Crossover (Persilangan) adalah sebuah proses
+  yang membentuk kromosom baru dari dua
+  kromosom induk dengan menggabungkan
+  bagian informasi dari masing-masing kromosom
+  Crossover menghasilkan kromosom baru
+  yang disebut kromosom anak (\emph{offspring}).
+  Crossover bertujuan untuk menambah
+  keanekaragaman string dalam satu populasi
+  dengan penyilangan antar string yang diperoleh
+  dari reproduksi sebelumnya. Hasil crossover 2
+  kromosom induk akan menghasilkan 2 \emph{offspring}(\cite{JMASIF2649})
+  \item Mutasi
+  
+  Mutasi adalah suatu modifikasi informasi gen-gen pada suatu kromosom. Proses mutasi dilakukan dengan pengkodean nilai yaitu memilih sembarang posisi gen pada kromosom, nilai yang ada tersebut kemudian diubah dengan suatu nilai tertentu yang diambil secara acak, memberikan nilai inversi atau menggeser nilai gen pada gen yang terpilih untuk dimutasikan(\cite{JMASIF2649}).
+  \item Kriteria Penghentian
+  
+  Kriteria berhenti adalah kriteria yang digunakan untuk menghentikan proses algoritma genetika, yang merupakan tujuan yang harus dicapai oleh proses tersebut dalam hal ini adalah untuk penjdwalan yang optimal. Ada beberapa kriteria terminasi yang dapat digunakan antara lain memberikan batasan jumlah iterasi, memberi batasan waktu proses, atau menghitung ada tidakna pergantian individu dalam populasi(\cite{Ardiansyah2022})
+\end{enumerate}
+% % Contoh penggunaan referensi dari pustaka
+% Newton pernah merumuskan \parencite{Newton1687} bahwa \lipsum[8]
+% % Contoh penggunaan referensi dari persamaan
+% Kemudian menjadi persamaan seperti pada persamaan \ref{eq:FirstLaw}.
+
+% % Contoh pembuatan persamaan
+% \begin{equation}
+%   % Label referensi dari persamaan yang dibuat
+%   \label{eq:FirstLaw}
+%   % Baris kode persamaan yang dibuat
+%   \sum \mathbf{F} = 0\; \Leftrightarrow\; \frac{\mathrm{d} \mathbf{v} }{\mathrm{d}t} = 0.
+% \end{equation}
